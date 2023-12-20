@@ -3,6 +3,7 @@ import argparse
 import chess
 import chess.pgn
 from chess.variant import find_variant
+from dotenv import load_dotenv
 import engine_wrapper
 import model
 import json
@@ -1084,6 +1085,9 @@ def check_python_version() -> None:
 
 
 if __name__ == "__main__":
+    # Load environment variables from .env.local
+    load_dotenv(dotenv_path=".env.local", verbose=True)
+
     multiprocessing.set_start_method('spawn')
     try:
         while restart:
