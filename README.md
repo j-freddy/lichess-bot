@@ -6,7 +6,8 @@ Forked from [lichess-bot][lichess-bot].
 
 ## Run
 
-Create `.env.local` file and set `LICHESS_API_TOKEN` variable.
+Create `.env.local` file and set `LICHESS_API_TOKEN` variable. See
+[lichess-bot][lichess-bot] for run instructions.
 
 ```py
 python lichess-bot.py -v
