@@ -5,9 +5,12 @@ With these classes, bot makers will not have to implement the UCI or XBoard inte
 """
 
 from __future__ import annotations
+import asyncio
 import chess
 from chess.engine import PlayResult, Limit
 import random
+
+import websockets
 from engine_wrapper import MinimalEngine, MOVE
 from typing import Any
 import logging
@@ -93,3 +96,23 @@ class ComboEngine(ExampleEngine):
             possible_moves.sort(key=str)
             move = possible_moves[0]
         return PlayResult(move, None, draw_offered=draw_offered)
+
+
+class ExternalCommunicator(MinimalEngine):
+    """
+    Use WebSockets to communicate with my external engine.
+    """
+
+    async def hello():
+        uri = "ws://localhost:8000"
+
+        async with websockets.connect(uri) as websocket:
+            await websocket.send("Hello!")
+            response = await websocket.recv()
+            print(f"<<< {response}")
+
+    async def search(self, board: chess.Board, *args: Any) -> PlayResult:
+
+        await asyncio.run(self.hello())
+
+        return PlayResult(random.choice(list(board.legal_moves)), None)
