@@ -3,11 +3,11 @@ url: "https://lichess.org/"        # Lichess base URL.
 
 engine:                            # Engine settings.
   dir: "./engines/"                # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "RandomMove"               # Binary name of the engine to use.
+  name: "mirroredbot.exe"          # Binary name of the engine to use.
   working_dir: ""                  # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
                                    # NOTE: If working_dir is set, the engine will look for files and directories relative to this directory, not where lichess-bot was launched. Absolute paths are unaffected.
-  protocol: "homemade"             # "uci", "xboard" or "homemade"
-  ponder: true                     # Think on opponent's time.
+  protocol: "uci"                  # "uci", "xboard" or "homemade"
+  ponder: false                    # Think on opponent's time.
 
   polyglot:
     enabled: false                 # Activate polyglot book.
@@ -87,11 +87,11 @@ engine:                            # Engine settings.
 #   Hash: 256
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
-    Move Overhead: 100             # Increase if your bot flags games too often.
-    Threads: 4                     # Max CPU threads the engine can use.
-    Hash: 512                      # Max memory (in megabytes) the engine can allocate.
-    SyzygyPath: "./syzygy/"        # Paths to Syzygy endgame tablebases that the engine reads.
-    UCI_ShowWDL: true              # Show the chance of the engine winning.
+    # Move Overhead: 100             # Increase if your bot flags games too often.
+    # Threads: 4                     # Max CPU threads the engine can use.
+    # Hash: 512                      # Max memory (in megabytes) the engine can allocate.
+    # SyzygyPath: "./syzygy/"        # Paths to Syzygy endgame tablebases that the engine reads.
+    # UCI_ShowWDL: true              # Show the chance of the engine winning.
 #   go_commands:                   # Additional options to pass to the UCI go command.
 #     nodes: 1                     # Search so many nodes only.
 #     depth: 5                     # Search depth ply only.
